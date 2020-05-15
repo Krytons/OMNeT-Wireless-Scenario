@@ -33,11 +33,6 @@ network PeriodicalWiFi
             parameters:
                 @display("p=93,320;is=s");
         }
-        scenarioManager: ScenarioManager {
-            parameters:
-                script = default(xml("<scenario/>"));
-                @display("p=93,396;is=s");
-        }
         forwardingNode[forwardingNodeCount]: AdhocHost {
             @display("p=415.344,295.22;is=l");
         }
