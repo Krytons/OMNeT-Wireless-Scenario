@@ -1,0 +1,511 @@
+file 16375 1589931562                                           
+version 2
+run Wireless-0-20200520-01:38:55-12231
+attr configname Wireless
+attr datetime 20200520-01:38:55
+attr experiment Wireless
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network NetworkModified
+attr processid 12231
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param *.host[*].wlan[2].radio.displayCommunicationRange true
+param *.visualizer.sceneVisualizer.descriptionFigure "\"title\""
+param *.visualizer.mediumVisualizer.displaySignals true
+param *.visualizer.physicalLinkVisualizer.displayLinks true
+param *.host[*].wlan[0].radio.transmitter.communicationRange 500m
+param *.host[*].wlan[0].radio.displayCommunicationRange true
+param *.configurator.dumpAddresses true
+param *.configurator.dumpTopology true
+param *.configurator.dumpLinks true
+param *.configurator.dumpRoutes true
+param **.number 3
+param **.host[*].hasIpv4 true
+param **.host[*].hasGn true
+param **.host[*].generic.typename "\"NextHopNetworkLayer\""
+param **.host[*].generic.nextHop.hopLimit 4
+param **.numApps 1
+param **.radioMedium.pathLoss.typename "\"LogNormalShadowing\""
+param **.radioMedium.pathLoss.alpha 4.03
+param **.radioMedium.pathLoss.sigma 4.98
+param **.host[*].mobility.typename "\"StationaryMobility\""
+param **.host[*].mobility.initFromDisplayString false
+param **.host[*].mobility.initialZ 0m
+param **.host[0].mobility.initialX 100m
+param **.host[0].mobility.initialY 100m
+param **.host[1].mobility.initialX 200m
+param **.host[1].mobility.initialY 100m
+param **.host[2].mobility.initialX 100m
+param **.host[2].mobility.initialY 200m
+param **.constraintAreaMaxX 500m
+param **.constraintAreaMaxY 500m
+param **.constraintAreaMaxZ 0m
+param **.constraintAreaMinX 0m
+param **.constraintAreaMinY 0m
+param **.constraintAreaMinZ 0m
+param **.host[0].app[0].typename "\"UdpSink\""
+param **.host[0].app[0].localPort 7654
+param **.host[1..2].app[0].typename "\"UdpBasicApp\""
+param **.host[1..2].app[0].destPort 7654
+param **.host[1..2].app[0].destAddresses "\"host[0]\""
+param **.host[1..2].app[0].messageLength 100B
+param **.host[1..2].app[0].startTime "uniform(0s, 10ms)"
+param **.host[1..2].app[0].sendInterval 20ms
+
+vector 0 NetworkModified.host[0].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 1 NetworkModified.host[0].wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr source radioChannelChanged
+attr title "Radio channel, vector"
+vector 2 NetworkModified.host[1].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 3 NetworkModified.host[1].wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr source radioChannelChanged
+attr title "Radio channel, vector"
+vector 4 NetworkModified.host[2].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 5 NetworkModified.host[2].wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr source radioChannelChanged
+attr title "Radio channel, vector"
+vector 6 NetworkModified.host[0].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 7 NetworkModified.host[1].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 8 NetworkModified.host[2].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 9 NetworkModified.host[0].wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr title "contention window, vector"
+vector 10 NetworkModified.host[1].wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged: ETV
+attr interpolationmode sample-hold
+attr title "contention window, vector"
+vector 11 NetworkModified.host[2].wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr title "contention window, vector"
+0	4287 24 0 0 0 0 3 0 2 2 4
+1	4311 8 0 0 0 0 1 0 0 0 0
+2	4319 24 0 0 0 0 3 0 2 2 4
+3	4343 8 0 0 0 0 1 0 0 0 0
+4	4351 24 0 0 0 0 3 0 2 2 4
+5	4375 8 0 0 0 0 1 0 0 0 0
+6	4383 8 0 0 0 0 1 1 1 1 1
+7	4391 8 0 0 0 0 1 1 1 1 1
+8	4399 8 0 0 0 0 1 1 1 1 1
+9	4407 9 0 0 0 0 1 31 31 31 961
+10	4416 10 0 0 0 0 1 31 31 31 961
+11	4426 10 0 0 0 0 1 31 31 31 961
+
+s)"
+vector 14 NetworkModified.host[1].ipv4.arp arpRequestSent:vector(packetBytes) ETV
+attr source arpRequestSent
+attr title "ARP request sent, vector(packetBytes)"
+vector 15 NetworkModified.host[1].wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets received from upper layer, vector(packetBytes)"
+vector 16 NetworkModified.host[1].wlan[0].mac.dcf.channelAccess.pendingQueue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 17 NetworkModified.host[1].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 18 NetworkModified.host[1].wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr title "backoff periods, vector"
+vector 19 NetworkModified.host[1].wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr interpolationmode sample-hold
+attr source count(backoffStarted)-count(backoffStopped)
+attr title "backoff active, vector"
+vector 20 NetworkModified.host[1].wlan[0].mac.dcf.channelAccess.pendingQueue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 21 NetworkModified.host[1].wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 22 NetworkModified.host[1].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetEnqueued) - count(packetDequeued)"
+attr title "queue length, vector"
+vector 23 NetworkModified.host[1].wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr title "datarates selected, vector"
+vector 24 NetworkModified.host[1].wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets sent to lower layer, vector(packetBytes)"
+vector 25 NetworkModified.host[1].wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr interpolationmode sample-hold
+attr source count(frameSequenceStarted)-count(frameSequenceFinished)
+attr title "frame sequence active, vector"
+vector 26 NetworkModified.host[1].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 27 NetworkModified.host[1].wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets sent, vector(packetBytes)"
+vector 28 NetworkModified.host[1].wlan[0].mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, vector(packetBytes)"
+vector 29 NetworkModified.host[1].wlan[0].mac.dcf packetSentToPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , vector(packetBytes)"
+vector 30 NetworkModified.host[1].wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, vector(packetBytes)"
+vector 31 NetworkModified.host[1].wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetDequeued)
+attr title "queueing times, vector"
+vector 32 NetworkModified.host[2].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 33 NetworkModified.host[2].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 34 NetworkModified.host[2].ipv4.arp arpRequestSent:vector(packetBytes) ETV
+attr source arpRequestSent
+attr title "ARP request sent, vector(packetBytes)"
+vector 35 NetworkModified.host[2].wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets received from upper layer, vector(packetBytes)"
+vector 36 NetworkModified.host[2].wlan[0].mac.dcf.channelAccess.pendingQueue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 37 NetworkModified.host[2].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 38 NetworkModified.host[2].wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr title "backoff periods, vector"
+vector 39 NetworkModified.host[2].wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr interpolationmode sample-hold
+attr source count(backoffStarted)-count(backoffStopped)
+attr title "backoff active, vector"
+vector 40 NetworkModified.host[2].wlan[0].mac.dcf.channelAccess.pendingQueue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 41 NetworkModified.host[2].wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 42 NetworkModified.host[2].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetEnqueued) - count(packetDequeued)"
+attr title "queue length, vector"
+vector 43 NetworkModified.host[2].wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr title "datarates selected, vector"
+vector 44 NetworkModified.host[2].wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets sent to lower layer, vector(packetBytes)"
+vector 45 NetworkModified.host[2].wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr interpolationmode sample-hold
+attr source count(frameSequenceStarted)-count(frameSequenceFinished)
+attr title "frame sequence active, vector"
+vector 46 NetworkModified.host[2].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 47 NetworkModified.host[2].wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets sent, vector(packetBytes)"
+vector 48 NetworkModified.host[2].wlan[0].mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, vector(packetBytes)"
+vector 49 NetworkModified.host[2].wlan[0].mac.dcf packetSentToPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , vector(packetBytes)"
+vector 50 NetworkModified.host[2].wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, vector(packetBytes)"
+vector 51 NetworkModified.host[2].wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetDequeued)
+attr title "queueing times, vector"
+0	12355 24 0 0 0 0 3 0 2 2 4
+1	12379 8 0 0 0 0 1 0 0 0 0
+2	12387 68 0 17 0 0.005538135023 5 0 3 7 17
+3	12455 8 0 0 0 0 1 0 0 0 0
+4	12463 68 0 33 0 0.005978446164 5 0 3 7 17
+5	12531 8 0 0 0 0 1 0 0 0 0
+6	12539 8 0 0 0 0 1 1 1 1 1
+7	12547 52 0 17 0 0.005538135023 3 0 1 2 2
+8	12599 52 0 33 0 0.005978446164 3 0 1 2 2
+9	12651 9 0 0 0 0 1 31 31 31 961
+10	12660 10 0 0 0 0 1 31 31 31 961
+11	12670 10 0 0 0 0 1 31 31 31 961
+12	12680 481 4 140 0.005488135023 0.365488135023 19 100 100 1900 190000
+13	13161 481 6 141 0.005488135023 0.365488135023 19 108 108 2052 221616
+14	13642 23 7 7 0.005488135023 0.005488135023 1 28 28 28 784
+15	13665 23 9 9 0.005488135023 0.005488135023 1 36 36 36 1296
+16	13688 23 9 9 0.005488135023 0.005488135023 1 64 64 64 4096
+17	13711 45 9 11 0.005488135023 0.005488135023 2 0 1 1 1
+18	13756 22 9 9 0.005488135023 0.005488135023 1 0 0 0 0
+19	13778 45 9 10 0.005488135023 0.005488135023 2 0 1 1 1
+20	13823 24 11 11 0.005488135023 0.005488135023 1 64 64 64 4096
+21	13847 23 11 11 0.005488135023 0.005488135023 1 0 0 0 0
+22	13870 46 11 16 0.005488135023 0.005538135023 2 0 1 1 1
+23	13916 30 11 11 0.005488135023 0.005488135023 1 24000000 24000000 24000000 5.76e+14
+24	13946 24 11 11 0.005488135023 0.005488135023 1 64 64 64 4096
+25	13970 46 11 16 0.005488135023 0.005538135023 2 0 1 1 1
+26	14016 92 12 17 0.005488135023 0.005538135023 4 0 2 4 6
+27	14108 24 16 16 0.005538135023 0.005538135023 1 64 64 64 4096
+28	14132 24 16 16 0.005538135023 0.005538135023 1 64 64 64 4096
+29	14156 24 16 16 0.005538135023 0.005538135023 1 64 64 64 4096
+30	14180 24 16 16 0.005538135023 0.005538135023 1 64 64 64 4096
+31	14204 27 16 16 0.005538135023 0.005538135023 1 5e-05 5e-05 5e-05 2.5e-09
+32	14231 457 20 137 0.005928446164 0.345928446164 18 100 100 1800 180000
+33	14688 457 22 138 0.005928446164 0.345928446164 18 108 108 1944 209952
+34	15145 24 23 23 0.005928446164 0.005928446164 1 28 28 28 784
+35	15169 24 25 25 0.005928446164 0.005928446164 1 36 36 36 1296
+36	15193 24 25 25 0.005928446164 0.005928446164 1 64 64 64 4096
+37	15217 46 25 27 0.005928446164 0.005928446164 2 0 1 1 1
+38	15263 24 25 25 0.005928446164 0.005928446164 1 19 19 19 361
+39	15287 46 25 26 0.005928446164 0.005928446164 2 0 1 1 1
+40	15333 24 27 27 0.005928446164 0.005928446164 1 64 64 64 4096
+41	15357 23 27 27 0.005928446164 0.005928446164 1 0 0 0 0
+42	15380 46 27 32 0.005928446164 0.005978446164 2 0 1 1 1
+43	15426 30 27 27 0.005928446164 0.005928446164 1 24000000 24000000 24000000 5.76e+14
+44	15456 24 27 27 0.005928446164 0.005928446164 1 64 64 64 4096
+45	15480 46 27 32 0.005928446164 0.005978446164 2 0 1 1 1
+46	15526 92 28 33 0.005928446164 0.005978446164 4 0 2 4 6
+47	15618 24 32 32 0.005978446164 0.005978446164 1 64 64 64 4096
+48	15642 24 32 32 0.005978446164 0.005978446164 1 64 64 64 4096
+49	15666 24 32 32 0.005978446164 0.005978446164 1 64 64 64 4096
+50	15690 24 32 32 0.005978446164 0.005978446164 1 64 64 64 4096
+51	15714 27 32 32 0.005978446164 0.005978446164 1 5e-05 5e-05 5e-05 2.5e-09
+vector 52 NetworkModified.host[0].app[0] throughput:vector ETV
+attr source throughput(packetReceived)
+attr title "throughput, vector"
+attr unit bps
+vector 53 NetworkModified.host[1].app[0] throughput:vector ETV
+attr source throughput(packetReceived)
+attr title "throughput, vector"
+attr unit bps
+vector 54 NetworkModified.host[2].app[0] throughput:vector ETV
+attr source throughput(packetReceived)
+attr title "throughput, vector"
+attr unit bps
+52	16185 63 142 142 0.1 0.365488135023 4 0 0 0 0
+53	16248 63 142 142 0.1 0.365488135023 4 0 0 0 0
+54	16311 63 142 142 0.1 0.365488135023 4 0 0 0 0
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ector"
+attr unit bps
+vector 110 NetworkModified.host[1].wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets received, vector(packetBytes)"
+vector 111 NetworkModified.host[1].wlan[0].mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, vector(packetBytes)"
+vector 112 NetworkModified.host[1].wlan[0].mac.dcf packetReceivedFromPeerWithRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, vector(packetBytes)"
+vector 113 NetworkModified.host[1].wlan[0].mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets sent to upper layer, vector(packetBytes)"
+vector 114 NetworkModified.host[1].wlan[0].mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, vector(packetBytes)"
+vector 115 NetworkModified.host[2].wlan[0].mac.dcf packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, vector(packetBytes)"
+vector 116 NetworkModified.host[2].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, vector(packetBytes)"
+vector 117 NetworkModified.host[1].wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, vector(packetBytes)"
+vector 118 NetworkModified.host[1].wlan[0].mac.dcf packetSentToPeerWithRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, vector(packetBytes)"
+vector 119 NetworkModified.host[1].wlan[0].mac.dcf.recipientMacDataService packetDropDuplicateDetected:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, vector(packetBytes)"
+vector 120 NetworkModified.host[1].wlan[0].mac packetDropDuplicateDetected:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, vector(packetBytes)"
+vector 121 NetworkModified.host[0].wlan[0].mac.dcf packetDropRetryLimitReached:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, vector(packetBytes)"
+vector 122 NetworkModified.host[0].wlan[0].mac packetDropRetryLimitReached:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, vector(packetBytes)"
+vector 123 NetworkModified.host[1].wlan[0].mac.dcf packetDropRetryLimitReached:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, vector(packetBytes)"
+vector 124 NetworkModified.host[1].wlan[0].mac packetDropRetryLimitReached:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, vector(packetBytes)"
+0	28202 5630 0 5965 0 1.184937695303 239 0 3 592 1538
+1	33832 8 0 0 0 0 1 0 0 0 0
+2	33840 2414 0 6019 0 1.203508694611 103 0 3 252 654
+3	36254 8 0 0 0 0 1 0 0 0 0
+4	36262 11207 0 6007 0 1.200629361739 475 0 3 1182 3072
+5	47469 8 0 0 0 0 1 0 0 0 0
+6	47477 10888 0 5965 0 1.184937695303 459 0 3 563 1229
+7	58365 6336 0 6019 0 1.203508694611 267 0 3 383 881
+8	64701 13963 0 6017 0 1.203427166342 590 0 3 472 826
+9	78664 236 0 4723 0 1.031278802843 10 31 1023 2262 1415754
+10	78900 917 0 5940 0 1.181671694611 35 31 1023 8797 5643043
+11	79817 5077 0 5681 0 1.166177026099 193 31 1023 50975 32204033
+12	84894 1607 4 5970 0.005488135023 1.185488135023 60 100 100 6000 600000
+13	86501 1607 6 5971 0.005488135023 1.185488135023 60 108 108 6480 699840
+14	88108 49 7 4301 0.005488135023 1.005488135023 2 28 28 56 1568
+15	88157 1669 9 5974 0.005488135023 1.185488135023 62 36 136 8232 1112352
+16	89826 1669 9 5974 0.005488135023 1.185488135023 62 64 164 9968 1621952
+17	91495 1932 9 5974 0.005488135023 1.185488135023 75 0 51 2298 92606
+18	93427 1256 9 5997 0.005488135023 1.194747694611 48 0 945 9371 5483919
+19	94683 3335 9 6012 0.005488135023 1.203426694611 134 0 1 67 67
+20	98018 347 11 5845 0.005488135023 1.174950694611 13 64 164 1932 304048
+21	98365 452 11 5845 0.005488135023 1.174950694611 13 0 0.16796789246 0.75297224112 0.10466313604842
+22	98817 596 11 5845 0.005488135023 1.174950694611 24 0 2 32 52
+23	99413 1595 11 6013 0.005488135023 1.203426694611 50 24000000 24000000 1200000000 2.88e+16
+24	101008 1341 11 6013 0.005488135023 1.203426694611 50 14 164 7700 1245800
+25	102349 2365 11 6013 0.005488135023 1.203426694611 95 0 1 48 48
+26	104714 4980 12 6019 0.005488135023 1.203508694611 200 0 2 200 300
+27	109694 1341 16 6018 0.005538135023 1.203508694611 50 14 164 7700 1245800
+28	111035 50 16 4313 0.005538135023 1.005538135023 2 64 64 128 8192
+29	111085 50 16 4313 0.005538135023 1.005538135023 2 64 64 128 8192
+30	111135 372 16 5850 0.005538135023 1.175032694611 14 14 164 1796 277544
+31	111507 398 16 5842 0.005538135023 1.174520694611 11 5e-05 0.101734750833 0.314027117792 0.020739702560661
+32	111905 1608 20 5977 0.005928446164 1.185928446164 60 100 100 6000 600000
+33	113513 1608 22 5978 0.005928446164 1.185928446164 60 108 108 6480 699840
+34	115121 24 23 23 0.005928446164 0.005928446164 1 28 28 28 784
+35	115145 1632 25 5981 0.005928446164 1.185928446164 61 36 136 8196 1111056
+36	116777 1632 25 5981 0.005928446164 1.185928446164 61 64 164 9904 1617856
+37	118409 2867 25 5981 0.005928446164 1.185928446164 116 0 6 170 550
+38	121276 6103 25 6011 0.005928446164 1.200684361739 235 0 1016 47672 28333708
+39	127379 13006 25 6017 0.005928446164 1.203427166342 526 0 1 263 263
+40	140385 1465 27 5545 0.005928446164 1.157896026099 55 64 164 8920 1456480
+41	141850 1765 27 5545 0.005928446164 1.157896026099 55 0 0.104710441076 1.230954315481 0.081411105159714
+42	143615 2686 27 6011 0.005928446164 1.200684361739 109 0 2 127 199
+43	146301 7479 27 6001 0.005928446164 1.200547361739 236 24000000 24000000 5664000000 1.35936e+17
+44	153780 6296 27 6001 0.005928446164 1.200547361739 236 14 164 38304 6271256
+45	160076 11560 27 6011 0.005928446164 1.200684361739 468 0 1 234 234
+46	171636 23310 28 6007 0.005928446164 1.200629361739 944 0 2 944 1416
+47	194946 6297 32 6006 0.005978446164 1.200629361739 236 14 164 38304 6271256
+48	201243 24 32 32 0.005978446164 0.005978446164 1 64 64 64 4096
+49	201267 24 32 32 0.005978446164 0.005978446164 1 64 64 64 4096
+50	201291 1485 32 5550 0.005978446164 1.157978026099 56 14 164 8784 1429976
+51	202776 1975 32 6011 0.005978446164 1.200684361739 54 5e-05 0.107418667128 1.550465850526 0.082085910471408
+52	204751 2967 35 5956 0.005978779728 1.184893695303 111 14 164 17854 2913156
+53	207718 2967 35 5956 0.005978779728 1.184893695303 111 14 164 17854 2913156
+54	210685 50 35 4316 0.005978779728 1.005538468587 2 64 64 128 8192
+55	210735 50 35 4316 0.005978779728 1.005538468587 2 64 64 128 8192
+56	210785 744 35 5800 0.005978779728 1.173640361047 28 14 164 4242 680788
+57	211529 1657 35 5865 0.005978779728 1.175549028175 62 36 136 8232 1112352
+58	213186 50 37 4318 0.005978779728 1.005538468587 2 28 28 56 1568
+59	213236 50 39 4320 0.005978779728 1.005538468587 2 36 36 72 2592
+60	213286 50 39 4320 0.005978779728 1.005538468587 2 64 64 128 8192
+61	213336 96 39 4323 0.005978779728 1.005888468587 4 0 1 2 2
+62	213432 257 39 4696 0.005978779728 1.023474802843 10 6 426 1312 387896
+63	213689 786 39 4710 0.005978779728 1.031173802843 32 0 1 16 16
+64	214475 50 42 4323 0.006148779728 1.005888468587 2 64 64 128 8192
+65	214525 60 42 4323 0.006148779728 1.005888468587 2 0.00017 0.00035 0.00052 1.514e-07
+66	214585 97 42 4723 0.006148779728 1.031278802843 4 0 1 2 2
+67	214682 3747 42 5956 0.006148779728 1.184893695303 118 24000000 24000000 2832000000 6.7968e+16
+68	218429 3039 42 5958 0.006148779728 1.184903695303 118 14 64 2152 62128
+69	221468 491 42 4723 0.006148779728 1.031278802843 20 0 1 10 10
+70	221959 11684 43 5965 0.006148779728 1.184937695303 472 0 2 472 708
+71	233643 3039 47 5964 0.006198779728 1.184937695303 118 14 64 2152 62128
+72	236682 3039 47 5964 0.006198779728 1.184937695303 118 14 64 2152 62128
+73	239721 2834 47 5964 0.006198779728 1.184937695303 110 14 64 1640 29360
+74	242555 796 47 4721 0.006198779728 1.031267802843 30 0 4.4e-05 0.00044 1.936e-08
+75	243351 1498 51 5939 0.006199113292 1.181661361739 58 14 164 2262 244468
+76	244849 996 51 5343 0.006199113292 1.112594221496 39 14 64 646 15444
+77	245845 996 51 5343 0.006199113292 1.112594221496 39 14 64 646 15444
+78	246841 972 51 5343 0.006199113292 1.112594221496 38 14 64 582 11348
+79	247813 24 51 51 0.006199113292 0.006199113292 1 36 36 36 1296
+80	247837 6273 62 6006 0.006243113292 1.200629361739 235 14 164 38240 6267160
+81	254110 2170 66 5842 0.006243585023 1.174520694611 83 14 164 6512 958568
+82	256280 2016 66 5680 0.006243585023 1.166166693227 77 14 164 6678 1006892
+83	258296 1936 66 5680 0.006243585023 1.166166693227 74 14 164 6286 949004
+84	260232 2016 66 5680 0.006243585023 1.166166693227 77 14 164 6678 1006892
+85	262248 1936 66 5680 0.006243585023 1.166166693227 74 14 164 6286 949004
+86	264184 19566 74 6010 0.006395113292 1.200673361739 732 0 4.4e-05 0.010736 4.72384e-07
+87	283750 4812 86 6006 0.006731113292 1.200629361739 180 164 164 29520 4841280
+88	288562 205 98 4716 0.006822779728 1.031223802843 8 64 64 512 32768
+89	288767 2917 113 5956 0.007847446856 1.184893695303 109 14 164 17726 2904964
+90	291684 2223 113 5956 0.007847446856 1.184893695303 83 164 164 13612 2232368
+91	293907 1607 116 5868 0.007847446856 1.175549028175 60 108 108 6480 699840
+92	295514 1538 116 5868 0.007847446856 1.175549028175 60 1 60 1830 73810
+93	297052 1607 117 5869 0.007847446856 1.175549028175 60 100 100 6000 600000
+94	298659 2252 117 5869 0.007847446856 1.175549028175 60 8.2333564e-05 1.041950891768 10.822418464285 9.1187350526954
+95	300911 1528 117 5869 0.007847446856 1.175549028175 60 0 52 1360 46734
+96	302439 24 141 141 0.00843178042 0.00843178042 1 64 64 64 4096
+97	302463 24 141 141 0.00843178042 0.00843178042 1 64 64 64 4096
+98	302487 954 141 6011 0.00843178042 1.200684361739 36 14 164 4304 663456
+99	303441 954 141 6011 0.00843178042 1.200684361739 36 14 164 4304 663456
+100	304395 25 141 141 0.00843178042 0.00843178042 1 64 64 64 4096
+101	304420 77 151 4723 0.008476113984 1.031278802843 2 0.002327334256 0.025390334256 0.027717668512 0.00065008555837056
+102	304497 1333 232 5956 0.030178779728 1.184893695303 48 164 164 7872 1291008
+103	305830 1360 232 5956 0.030178779728 1.184893695303 49 64 164 7936 1295104
+104	307190 1360 232 5956 0.030178779728 1.184893695303 49 64 164 7936 1295104
+105	308550 1333 232 5956 0.030178779728 1.184893695303 48 164 164 7872 1291008
+106	309883 6751 326 6018 0.076406917895 1.203508694611 242 0 4.4e-05 0.003564 1.56816e-07
+107	316634 444 329 6011 0.076461446164 1.200684361739 16 164 164 2624 430336
+108	317078 444 329 6011 0.076461446164 1.200684361739 16 164 164 2624 430336
+109	317522 205 535 5252 0.1 1.1 11 16000 72000 408000 17472000000
+110	317727 243 4349 5842 1.006982802151 1.174520694611 9 14 64 226 9564
+111	317970 243 4349 5842 1.006982802151 1.174520694611 9 14 64 226 9564
+112	318213 54 4349 4616 1.006982802151 1.013032136407 2 64 64 128 8192
+113	318267 27 4349 4349 1.006982802151 1.006982802151 1 36 36 36 1296
+114	318294 1339 4460 6018 1.007026802151 1.203508694611 48 14 164 7572 1237608
+115	319633 521 4464 5939 1.007027273882 1.181661361739 19 14 164 1616 229024
+116	320154 521 4464 5939 1.007027273882 1.181661361739 19 14 164 1616 229024
+117	320675 189 4491 5842 1.007323469279 1.174520694611 7 14 14 98 1372
+118	320864 1005 4521 6018 1.008611469279 1.203508694611 36 164 164 5904 968256
+119	321869 27 4616 4616 1.013032136407 1.013032136407 1 64 64 64 4096
+120	321896 27 4616 4616 1.013032136407 1.013032136407 1 64 64 64 4096
+121	321923 27 4723 4723 1.031278802843 1.031278802843 1 64 64 64 4096
+122	321950 27 4723 4723 1.031278802843 1.031278802843 1 64 64 64 4096
+123	321977 56 5069 5431 1.067685609522 1.119184554368 2 164 164 328 53792
+124	322033 56 5069 5431 1.067685609522 1.119184554368 2 164 164 328 53792
+
