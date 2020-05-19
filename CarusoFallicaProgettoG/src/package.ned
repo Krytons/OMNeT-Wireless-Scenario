@@ -1,0 +1,3 @@
+package carusofallicaprogettog;
+
+@license(LGPL);
