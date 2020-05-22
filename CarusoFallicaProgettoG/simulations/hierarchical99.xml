@@ -1,4 +1,17 @@
 <config>
-    <interface host="*" address="10.0.0.x" netmask="255.255.255.255"/>
-    <autoroute metric="hopCount" sourceHosts="**" destinationInterfaces="*.wlan0" />
+    <interface host="host5" destination="host6" nextHop="host6">
+    <interface host="host6" destination="host7" nextHop="host7">
+    <interface host="host7" destination="*" nextHop="*">
+    
+    <interface host="host8" destination="host9" nextHop="host9">
+    <interface host="host9" destination="host10" nextHop="host10">
+    <interface host="host10" destination="*" nextHop="*">
+    
+    <interface host="host11" destination="host12" nextHop="host12">
+    <interface host="host12" destination="host13" nextHop="host13">
+    <interface host="host13" destination="*" nextHop="*">
+    
+    <interface host="host14" destination="host15" nextHop="host15">
+    <interface host="host15" destination="host16" nextHop="host16">
+    <interface host="host4" destination="*" nextHop="*">
 </config>

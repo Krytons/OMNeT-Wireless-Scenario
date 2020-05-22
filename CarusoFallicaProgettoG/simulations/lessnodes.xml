@@ -1,0 +1,6 @@
+<config>
+ 	<route hosts="host0" destination="host1" nextHop="host1" interface="wlan0" metric="0"/>
+   	<route hosts="host1" destination="host2" nextHop="host2" interface="wlan0" metric="0"/>
+   	<route hosts="host2" destination="host3" nextHop="host3" interface="wlan0" metric="0"/>
+   	<route hosts="host3" destination="host4" nextHop="host4" interface="wlan0" metric="0"/>
+</config>

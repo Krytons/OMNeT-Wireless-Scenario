@@ -1,0 +1,595 @@
+file 42343 1590049450                                           
+version 2
+run Routing-0-20200521-10:13:33-6423
+attr configname Routing
+attr datetime 20200521-10:13:33
+attr experiment Routing
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network NetworkModified
+attr processid 6423
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param **.wlan[*].bitrate 24Mbps
+param **.netmaskRoutes "\"\""
+param **.arp.typename "\"GlobalArp\""
+param *.*.routing.typename "\"Dsdv\""
+param *.*.routing.helloInterval 1s
+param *.*.routing.routeLifetime 2s
+param *.visualizer.**.routingTableVisualizer[*].displayLabels true
+param **.host*.mobility.typename "\"MassMobility\""
+param **.host*.mobility.initFromDisplayString false
+param **.host*.mobility.changeInterval "truncnormal(2s, 0.5s)"
+param **.host*.mobility.angleDelta "normal(0deg, 30deg)"
+param **.host*.mobility.speed "truncnormal(20mps, 8mps)"
+param **.host*.mobility.updateInterval 100ms
+param **.networkConfigurator.typename "\"NextHopNetworkConfigurator\""
+param *.host[*].wlan[2].radio.displayCommunicationRange true
+param *.visualizer.sceneVisualizer.descriptionFigure "\"title\""
+param *.visualizer.mediumVisualizer.displaySignals true
+param *.visualizer.physicalLinkVisualizer.displayLinks true
+param *.host[*].wlan[0].radio.transmitter.communicationRange 500m
+param *.host[*].wlan[0].radio.displayCommunicationRange true
+param **.host[*].mobility.initialZ 0m
+param **.host[0].mobility.initialX 100m
+param **.host[0].mobility.initialY 100m
+param **.host[1].mobility.initialX 200m
+param **.host[1].mobility.initialY 100m
+param **.host[2].mobility.initialX 100m
+param **.host[2].mobility.initialY 200m
+param **.host[3].mobility.initialX 150m
+param **.host[3].mobility.initialY 150m
+param **.constraintAreaMaxX 500m
+param **.constraintAreaMaxY 500m
+param **.constraintAreaMaxZ 0m
+param **.constraintAreaMinX 0m
+param **.constraintAreaMinY 0m
+param **.constraintAreaMinZ 0m
+param **.number 4
+param **.networkConfiguratorModule "\"networkConfigurator\""
+param **.networkConfigurator.config "xmldoc(\"hierarchical99.xml\")"
+param **.host[*].hasIpv4 false
+param **.host[*].hasIpv6 false
+param **.host[*].hasGn true
+param **.host[*].generic.typename "\"NextHopNetworkLayer\""
+param **.host[*].generic.nextHop.hopLimit 4
+param **.numApps 1
+param **.radioMedium.pathLoss.typename "\"LogNormalShadowing\""
+param **.radioMedium.pathLoss.alpha 3
+param **.radioMedium.pathLoss.sigma 7
+param **.host[0].app[0].typename "\"UdpSink\""
+param **.host[0].app[0].localPort 7654
+param **.host[1].app[0].typename "\"UdpSink\""
+param **.host[1].app[0].localPort 7654
+param **.host[2..3].app[0].typename "\"UdpBasicApp\""
+param **.host[2..3].app[0].destPort 7654
+param **.host[2..3].app[0].destAddresses "\"host[0]\""
+param **.host[2..3].app[0].messageLength 100B
+param **.host[2..3].app[0].startTime "uniform(0s, 10ms)"
+param **.host[2..3].app[0].sendInterval 20ms
+param **.host[2..3].app[0].packetName "\"CustomData\""
+
+vector 0 NetworkModified.host[0].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 1 NetworkModified.host[0].wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr source radioChannelChanged
+attr title "Radio channel, vector"
+vector 2 NetworkModified.host[1].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 3 NetworkModified.host[1].wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr source radioChannelChanged
+attr title "Radio channel, vector"
+vector 4 NetworkModified.host[2].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 5 NetworkModified.host[2].wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr source radioChannelChanged
+attr title "Radio channel, vector"
+vector 6 NetworkModified.host[3].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+vector 7 NetworkModified.host[3].wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr source radioChannelChanged
+attr title "Radio channel, vector"
+vector 8 NetworkModified.host[0].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 9 NetworkModified.host[1].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 10 NetworkModified.host[2].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 11 NetworkModified.host[3].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+vector 12 NetworkModified.host[0].wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr title "contention window, vector"
+vector 13 NetworkModified.host[1].wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr title "contention window, vector"
+vector 14 NetworkModified.host[2].wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr title "contention window, vector"
+vector 15 NetworkModified.host[3].wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr title "contention window, vector"
+0	5773 24 0 0 0 0 3 0 2 2 4
+1	5797 8 0 0 0 0 1 0 0 0 0
+2	5805 24 0 0 0 0 3 0 2 2 4
+3	5829 8 0 0 0 0 1 0 0 0 0
+4	5837 24 0 0 0 0 3 0 2 2 4
+5	5861 8 0 0 0 0 1 0 0 0 0
+6	5869 24 0 0 0 0 3 0 2 2 4
+7	5893 8 0 0 0 0 1 0 0 0 0
+8	5901 8 0 0 0 0 1 1 1 1 1
+9	5909 8 0 0 0 0 1 1 1 1 1
+10	5917 9 0 0 0 0 1 1 1 1 1
+11	5926 9 0 0 0 0 1 1 1 1 1
+12	5935 10 0 0 0 0 1 31 31 31 961
+13	5945 10 0 0 0 0 1 31 31 31 961
+14	5955 10 0 0 0 0 1 31 31 31 961
+15	5965 10 0 0 0 0 1 31 31 31 961
+vector 16 NetworkModified.host[2].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+16	6149 24 5 5 0.008442657441 0.008442657441 1 100 100 100 10000
+vector 17 NetworkModified.host[2].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+17	6344 24 7 7 0.008442657441 0.008442657441 1 108 108 108 11664
+vector 18 NetworkModified.host[2].wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets received from upper layer, vector(packetBytes)"
+vector 19 NetworkModified.host[2].wlan[0].mac.dcf.channelAccess.pendingQueue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 20 NetworkModified.host[2].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 21 NetworkModified.host[2].wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr title "backoff periods, vector"
+vector 22 NetworkModified.host[2].wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr interpolationmode sample-hold
+attr source count(backoffStarted)-count(backoffStopped)
+attr title "backoff active, vector"
+18	7420 25 10 10 0.008442657441 0.008442657441 1 126 126 126 15876
+19	7445 25 10 10 0.008442657441 0.008442657441 1 154 154 154 23716
+20	7470 23 10 10 0.008442657441 0.008442657441 1 1 1 1 1
+21	7493 24 10 10 0.008442657441 0.008442657441 1 20 20 20 400
+22	7517 23 10 10 0.008442657441 0.008442657441 1 1 1 1 1
+22	7540 23 11 11 0.008442657441 0.008442657441 1 0 0 0 0
+vector 23 NetworkModified.host[2].wlan[0].mac.dcf.channelAccess.pendingQueue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 24 NetworkModified.host[2].wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 25 NetworkModified.host[2].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetEnqueued) - count(packetDequeued)"
+attr title "queue length, vector"
+vector 26 NetworkModified.host[2].wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr title "datarates selected, vector"
+vector 27 NetworkModified.host[2].wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets sent to lower layer, vector(packetBytes)"
+vector 28 NetworkModified.host[2].wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr interpolationmode sample-hold
+attr source count(frameSequenceStarted)-count(frameSequenceFinished)
+attr title "frame sequence active, vector"
+20	8754 23 12 12 0.008442657441 0.008442657441 1 0 0 0 0
+23	8777 25 12 12 0.008442657441 0.008442657441 1 154 154 154 23716
+24	8802 23 12 12 0.008442657441 0.008442657441 1 0 0 0 0
+25	8825 23 12 12 0.008442657441 0.008442657441 1 1 1 1 1
+26	8848 30 12 12 0.008442657441 0.008442657441 1 24000000 24000000 24000000 5.76e+14
+27	8878 25 12 12 0.008442657441 0.008442657441 1 154 154 154 23716
+28	8903 23 12 12 0.008442657441 0.008442657441 1 1 1 1 1
+vector 29 NetworkModified.host[2].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+4	9121 22 13 13 0.008442657441 0.008442657441 1 3 3 3 9
+10	9143 23 13 13 0.008442657441 0.008442657441 1 0 0 0 0
+29	9166 23 13 13 0.008442657441 0.008442657441 1 1 1 1 1
+29	9189 23 14 14 0.008442657441 0.008442657441 1 2 2 2 4
+11	9212 23 15 15 0.008442892968 0.008442892968 1 3 3 3 9
+vector 30 NetworkModified.host[2].wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets sent, vector(packetBytes)"
+vector 31 NetworkModified.host[2].wlan[0].mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, vector(packetBytes)"
+vector 32 NetworkModified.host[2].wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, vector(packetBytes)"
+vector 33 NetworkModified.host[2].wlan[0].mac.rx nav:vector ETV
+attr interpolationmode linear
+attr source navChanged
+attr title "network allocation vector, vector"
+vector 34 NetworkModified.host[3].wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets received from lower layer, vector(packetBytes)"
+vector 35 NetworkModified.host[3].wlan[0].mac.rx nav:vector ETV
+attr interpolationmode linear
+attr source navChanged
+attr title "network allocation vector, vector"
+vector 36 NetworkModified.host[3].wlan[0].mac.dcf packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropped
+attr title "packet drops, vector(packetBytes)"
+vector 37 NetworkModified.host[3].wlan[0].mac.dcf packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, vector(packetBytes)"
+vector 38 NetworkModified.host[3].wlan[0].mac packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropped
+attr title "packet drops, vector(packetBytes)"
+vector 39 NetworkModified.host[3].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, vector(packetBytes)"
+vector 40 NetworkModified.host[3].app[0] packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 41 NetworkModified.host[3].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 42 NetworkModified.host[3].wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets received from upper layer, vector(packetBytes)"
+vector 43 NetworkModified.host[3].wlan[0].mac.dcf.channelAccess.pendingQueue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 44 NetworkModified.host[3].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 45 NetworkModified.host[3].wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr title "backoff periods, vector"
+vector 46 NetworkModified.host[3].wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr interpolationmode sample-hold
+attr source count(backoffStarted)-count(backoffStopped)
+attr title "backoff active, vector"
+vector 47 NetworkModified.host[3].wlan[0].mac.dcf.channelAccess.pendingQueue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 48 NetworkModified.host[3].wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 49 NetworkModified.host[3].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetEnqueued) - count(packetDequeued)"
+attr title "queue length, vector"
+vector 50 NetworkModified.host[3].wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr title "datarates selected, vector"
+vector 51 NetworkModified.host[3].wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets sent to lower layer, vector(packetBytes)"
+vector 52 NetworkModified.host[3].wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr interpolationmode sample-hold
+attr source count(frameSequenceStarted)-count(frameSequenceFinished)
+attr title "frame sequence active, vector"
+vector 53 NetworkModified.host[3].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 54 NetworkModified.host[3].wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets sent, vector(packetBytes)"
+vector 55 NetworkModified.host[3].wlan[0].mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, vector(packetBytes)"
+vector 56 NetworkModified.host[3].wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, vector(packetBytes)"
+vector 57 NetworkModified.host[2].wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets received from lower layer, vector(packetBytes)"
+vector 58 NetworkModified.host[2].wlan[0].mac.dcf packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropped
+attr title "packet drops, vector(packetBytes)"
+vector 59 NetworkModified.host[2].wlan[0].mac.dcf packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, vector(packetBytes)"
+vector 60 NetworkModified.host[2].wlan[0].mac packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropped
+attr title "packet drops, vector(packetBytes)"
+vector 61 NetworkModified.host[2].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, vector(packetBytes)"
+vector 62 NetworkModified.host[0].wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets received from lower layer, vector(packetBytes)"
+vector 63 NetworkModified.host[0].wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets received, vector(packetBytes)"
+vector 64 NetworkModified.host[0].wlan[0].mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, vector(packetBytes)"
+vector 65 NetworkModified.host[0].wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, vector(packetBytes)"
+vector 66 NetworkModified.host[0].wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr title "datarates selected, vector"
+vector 67 NetworkModified.host[0].wlan[0].mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets sent to upper layer, vector(packetBytes)"
+vector 68 NetworkModified.host[0].udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, vector(packetBytes)"
+vector 69 NetworkModified.host[0].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed up, vector(count)"
+vector 70 NetworkModified.host[0].app[0] packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, vector(packetBytes)"
+vector 71 NetworkModified.host[0].app[0] endToEndDelay:vector ETV
+attr interpolationmode none
+attr source dataAge(packetReceived)
+attr title "end-to-end delay, vector"
+attr unit s
+vector 72 NetworkModified.host[0].app[0] rcvdPkSeqNo:vector ETV
+attr interpolationmode none
+attr source appPkSeqNo(packetReceived)
+attr title "received packet sequence number, vector"
+vector 73 NetworkModified.host[1].wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets received from lower layer, vector(packetBytes)"
+vector 74 NetworkModified.host[1].wlan[0].mac.rx nav:vector ETV
+attr interpolationmode linear
+attr source navChanged
+attr title "network allocation vector, vector"
+vector 75 NetworkModified.host[1].wlan[0].mac.dcf packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropped
+attr title "packet drops, vector(packetBytes)"
+vector 76 NetworkModified.host[1].wlan[0].mac.dcf packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, vector(packetBytes)"
+vector 77 NetworkModified.host[1].wlan[0].mac packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropped
+attr title "packet drops, vector(packetBytes)"
+vector 78 NetworkModified.host[1].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, vector(packetBytes)"
+vector 79 NetworkModified.host[0].wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets sent to lower layer, vector(packetBytes)"
+vector 80 NetworkModified.host[0].wlan[0].radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "Radio transmission state, vector"
+vector 81 NetworkModified.host[0].wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets sent, vector(packetBytes)"
+vector 82 NetworkModified.host[0].wlan[0].mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, vector(packetBytes)"
+vector 83 NetworkModified.host[0].wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, vector(packetBytes)"
+vector 84 NetworkModified.host[2].wlan[0].mac.dcf packetSentToPeerWithRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, vector(packetBytes)"
+vector 85 NetworkModified.host[0].wlan[0].mac.dcf packetReceivedFromPeerWithRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, vector(packetBytes)"
+vector 86 NetworkModified.host[2].wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets received, vector(packetBytes)"
+vector 87 NetworkModified.host[2].wlan[0].mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, vector(packetBytes)"
+vector 88 NetworkModified.host[2].wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, vector(packetBytes)"
+vector 89 NetworkModified.host[2].wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetDequeued)
+attr title "queueing times, vector"
+vector 90 NetworkModified.host[3].wlan[0].mac.dcf packetSentToPeerWithRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, vector(packetBytes)"
+vector 91 NetworkModified.host[0].wlan[0].mac.dcf.recipientMacDataService packetDropDuplicateDetected:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, vector(packetBytes)"
+vector 92 NetworkModified.host[0].wlan[0].mac.dcf packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropped
+attr title "packet drops, vector(packetBytes)"
+vector 93 NetworkModified.host[0].wlan[0].mac packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropped
+attr title "packet drops, vector(packetBytes)"
+vector 94 NetworkModified.host[0].wlan[0].mac packetDropDuplicateDetected:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, vector(packetBytes)"
+vector 95 NetworkModified.host[3].wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packets received, vector(packetBytes)"
+vector 96 NetworkModified.host[3].wlan[0].mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, vector(packetBytes)"
+vector 97 NetworkModified.host[3].wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, vector(packetBytes)"
+vector 98 NetworkModified.host[3].wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetDequeued)
+attr title "queueing times, vector"
+0	23499 274 53 290 0.008711128745 0.028845462105 12 2 3 30 78
+4	23773 248 19 338 0.008524657441 0.048700657441 11 2 3 27 69
+6	24021 318 35 354 0.008618892968 0.04949689136 14 2 3 35 91
+8	24339 546 38 290 0.008619128745 0.028845462105 24 0 3 30 66
+9	24885 452 39 319 0.008619128986 0.048525128088 20 1 3 40 100
+10	25337 641 19 355 0.008524657441 0.049497125247 27 0 3 38 86
+11	25978 733 20 354 0.008524892968 0.04949689136 31 0 3 40 88
+14	26711 125 32 345 0.008579657441 0.048755657441 5 31 127 411 41157
+15	26836 151 67 361 0.008755892968 0.04955189136 6 31 511 1050 351174
+16	26987 52 222 302 0.028442657441 0.048442657441 2 100 100 200 20000
+17	27039 52 223 303 0.028442657441 0.048442657441 2 108 108 216 23328
+18	27091 52 226 306 0.028442657441 0.048442657441 2 126 126 252 31752
+19	27143 52 226 306 0.028442657441 0.048442657441 2 154 154 308 47432
+20	27195 96 226 308 0.028442657441 0.048442657441 4 0 1 2 2
+21	27291 146 32 345 0.008579657441 0.048755657441 6 0 59 135 5439
+22	27437 472 32 362 0.008579657441 0.050151125247 20 0 1 10 10
+23	27909 52 228 308 0.028442657441 0.048442657441 2 154 154 308 47432
+24	27961 48 228 308 0.028442657441 0.048442657441 2 0 0 0 0
+25	28009 96 118 308 0.010157795584 0.048442657441 4 0 1 2 2
+26	28105 153 69 331 0.009155128488 0.048618657441 5 24000000 24000000 120000000 2.88e+15
+27	28258 128 69 331 0.009155128488 0.048618657441 5 154 154 770 118580
+28	28386 260 32 345 0.008579657441 0.048755657441 11 0 1 5 5
+29	28646 518 18 338 0.008524657441 0.048700657441 22 0 2 21 31
+30	29164 153 18 337 0.008524657441 0.048700657441 6 154 154 924 142296
+31	29317 153 18 337 0.008524657441 0.048700657441 6 154 154 924 142296
+32	29470 77 18 314 0.008524657441 0.048524657441 3 154 154 462 71148
+33	29547 847 18 360 0.008524657441 0.049541125247 33 0 4.4e-05 0.000484 2.1296e-08
+34	30394 227 21 340 0.008524892968 0.04870089136 9 14 154 966 142884
+35	30621 997 21 359 0.008524892968 0.04954089136 39 0 4.4e-05 0.000572 2.5168e-08
+36	31618 177 21 340 0.008524892968 0.04870089136 7 14 154 938 142492
+37	31795 177 21 340 0.008524892968 0.04870089136 7 14 154 938 142492
+38	31972 177 21 340 0.008524892968 0.04870089136 7 14 154 938 142492
+39	32149 177 21 340 0.008524892968 0.04870089136 7 14 154 938 142492
+40	32326 77 26 324 0.008579456198 0.048579456198 3 100 100 300 30000
+41	32403 77 28 325 0.008579456198 0.048579456198 3 108 108 324 34992
+42	32480 77 31 328 0.008579456198 0.048579456198 3 126 126 378 47628
+43	32557 77 31 328 0.008579456198 0.048579456198 3 154 154 462 71148
+44	32634 141 31 347 0.008579456198 0.04941489136 6 0 1 3 3
+45	32775 197 31 361 0.008579456198 0.04955189136 8 0 396 759 194857
+46	32972 632 31 361 0.008579456198 0.04955189136 27 0 1 14 14
+47	33604 76 34 347 0.008618892968 0.04941489136 3 154 154 462 71148
+48	33680 107 34 347 0.008618892968 0.04941489136 3 3.943677e-05 0.000835435162 0.001014642268 7.1904291555955e-07
+49	33787 118 34 347 0.008618892968 0.04941489136 5 0 1 3 3
+50	33905 215 34 347 0.008618892968 0.04941489136 7 24000000 24000000 168000000 4.032e+15
+51	34120 180 34 347 0.008618892968 0.04941489136 7 154 154 1078 166012
+52	34300 332 34 361 0.008618892968 0.04955189136 14 0 1 7 7
+53	34632 664 35 354 0.008618892968 0.04949689136 28 0 2 28 42
+54	35296 180 40 353 0.008700892968 0.04949689136 7 154 154 1078 166012
+55	35476 180 40 353 0.008700892968 0.04949689136 7 154 154 1078 166012
+56	35656 76 40 353 0.008700892968 0.04949689136 3 154 154 462 71148
+57	35732 204 43 356 0.008701128488 0.049497125247 8 14 154 812 119168
+58	35936 154 43 356 0.008701128488 0.049497125247 6 14 154 784 118776
+59	36090 154 43 356 0.008701128488 0.049497125247 6 14 154 784 118776
+60	36244 154 43 356 0.008701128488 0.049497125247 6 14 154 784 118776
+61	36398 154 43 356 0.008701128488 0.049497125247 6 14 154 784 118776
+62	36552 154 45 276 0.008701128745 0.028801462105 6 154 154 924 142296
+63	36706 154 45 276 0.008701128745 0.028801462105 6 154 154 924 142296
+64	36860 154 45 276 0.008701128745 0.028801462105 6 154 154 924 142296
+65	37014 77 45 276 0.008701128745 0.028801462105 3 154 154 462 71148
+66	37091 184 45 276 0.008701128745 0.028801462105 6 24000000 24000000 144000000 3.456e+15
+67	37275 102 45 276 0.008701128745 0.028801462105 4 126 126 504 63504
+68	37377 103 48 279 0.008701128745 0.028801462105 4 108 108 432 46656
+69	37480 95 48 279 0.008701128745 0.028801462105 4 1 4 10 30
+70	37575 103 49 280 0.008701128745 0.028801462105 4 100 100 400 40000
+71	37678 145 49 280 0.008701128745 0.028801462105 4 8.233352e-05 0.001670804595 0.002096816569 2.8624576346251e-06
+72	37823 95 49 280 0.008701128745 0.028801462105 4 0 1 2 2
+73	37918 251 51 320 0.008701128986 0.048525128088 10 14 154 840 119560
+74	38169 381 51 323 0.008701128986 0.048569128088 15 0 4.4e-05 0.00022 9.68e-09
+75	38550 251 51 320 0.008701128986 0.048525128088 10 14 154 840 119560
+76	38801 251 51 320 0.008701128986 0.048525128088 10 14 154 840 119560
+77	39052 251 51 320 0.008701128986 0.048525128088 10 14 154 840 119560
+78	39303 251 51 320 0.008701128986 0.048525128088 10 14 154 840 119560
+79	39554 149 52 282 0.008711128745 0.028811462105 6 14 14 84 1176
+80	39703 572 53 290 0.008711128745 0.028845462105 24 0 2 24 36
+81	40275 149 60 289 0.008745128745 0.028845462105 6 14 14 84 1176
+82	40424 149 60 289 0.008745128745 0.028845462105 6 14 14 84 1176
+83	40573 149 60 289 0.008745128745 0.028845462105 6 14 14 84 1176
+84	40722 76 75 337 0.009237128488 0.048700657441 3 154 154 462 71148
+85	40798 77 98 204 0.010113462036 0.023057599581 3 154 154 462 71148
+86	40875 50 118 259 0.010157795584 0.028569324481 2 14 14 28 392
+87	40925 50 118 259 0.010157795584 0.028569324481 2 14 14 28 392
+88	40975 50 118 259 0.010157795584 0.028569324481 2 14 14 28 392
+89	41025 73 118 259 0.010157795584 0.028569324481 2 0.00012666704 0.001715138143 0.001841805183 2.9577433885958e-06
+90	41098 104 126 200 0.010389363952 0.023057363952 4 154 154 616 94864
+91	41202 52 165 204 0.014961599664 0.023057599581 2 154 154 308 47432
+92	41254 52 165 204 0.014961599664 0.023057599581 2 154 154 308 47432
+93	41306 52 165 204 0.014961599664 0.023057599581 2 154 154 308 47432
+94	41358 52 165 204 0.014961599664 0.023057599581 2 154 154 308 47432
+95	41410 50 216 292 0.023101835209 0.028845697675 2 14 14 28 392
+96	41460 50 216 292 0.023101835209 0.028845697675 2 14 14 28 392
+97	41510 50 216 292 0.023101835209 0.028845697675 2 14 14 28 392
+98	41560 74 216 292 0.023101835209 0.028845697675 2 0.000126471141 0.014482942241 0.014609413382 0.00020977161090565
+vector 99 NetworkModified.host[0].app[0] throughput:vector ETV
+attr source throughput(packetReceived)
+attr title "throughput, vector"
+attr unit bps
+vector 100 NetworkModified.host[1].app[0] throughput:vector ETV
+attr source throughput(packetReceived)
+attr title "throughput, vector"
+attr unit bps
+vector 101 NetworkModified.host[2].app[0] throughput:vector ETV
+attr source throughput(packetReceived)
+attr title "throughput, vector"
+attr unit bps
+vector 102 NetworkModified.host[3].app[0] throughput:vector ETV
+attr source throughput(packetReceived)
+attr title "throughput, vector"
+attr unit bps
+99	42229 38 362 362 0.050151125247 0.050151125247 1 63807.142596295 63807.142596295 63807.142596295 4071351446.304
+100	42267 25 362 362 0.050151125247 0.050151125247 1 0 0 0 0
+101	42292 25 362 362 0.050151125247 0.050151125247 1 0 0 0 0
+102	42317 25 362 362 0.050151125247 0.050151125247 1 0 0 0 0
+
