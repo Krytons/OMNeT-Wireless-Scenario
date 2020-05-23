@@ -23,6 +23,7 @@
 #include <map>
 #include <set>
 
+
 #include "inet/common/IProtocolRegistrationListener.h"
 #include "inet/common/lifecycle/OperationalBase.h"
 #include "inet/common/packet/Message.h"
@@ -33,6 +34,7 @@
 #include "inet/networklayer/contract/INetworkProtocol.h"
 #include "inet/networklayer/nexthop/NextHopForwardingHeader_m.h"
 #include "inet/networklayer/nexthop/NextHopRoutingTable.h"
+#include "inet/networklayer/nexthop/customBottom_m.h"
 
 namespace inet {
 
@@ -63,6 +65,8 @@ class INET_API NextHopForwarding : public OperationalBase, public NetfilterBase,
         const INetfilter::IHook::Type hookType;
     };
 
+    int counter;
+
     struct SocketDescriptor
     {
         int socketId = -1;
@@ -81,6 +85,8 @@ class INET_API NextHopForwarding : public OperationalBase, public NetfilterBase,
     // config
     int defaultHopLimit;
     L3Address nextHopParam;
+    L3Address dataSource;
+    L3Address dataDestination;
 
     // working vars
     std::set<const Protocol *> upperProtocols;    // where to send packets after decapsulation

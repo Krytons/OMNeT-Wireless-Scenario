@@ -63,6 +63,7 @@ NextHopForwarding::~NextHopForwarding()
 void NextHopForwarding::initialize(int stage)
 {
     OperationalBase::initialize(stage);
+    counter = 0;
 
     if (stage == INITSTAGE_LOCAL) {
         interfaceTable = getModuleFromPar<IInterfaceTable>(par("interfaceTableModule"), this);
@@ -594,8 +595,7 @@ void NextHopForwarding::sendDatagramToHL(Packet *packet)
     }
 }
 
-void NextHopForwarding::sendDatagramToOutput(Packet *datagram, const InterfaceEntry *ie, L3Address nextHop)
-{
+void NextHopForwarding::sendDatagramToOutput(Packet *datagram, const InterfaceEntry *ie, L3Address nextHop){
     delete datagram->removeControlInfo();
 
     if (datagram->getByteLength() > ie->getMtu())
@@ -638,6 +638,17 @@ void NextHopForwarding::sendDatagramToOutput(Packet *datagram, const InterfaceEn
         datagram->addTagIfAbsent<InterfaceReq>()->setInterfaceId(ie->getInterfaceId());
         datagram->addTagIfAbsent<DispatchProtocolInd>()->setProtocol(&Protocol::nextHopForwarding);
         datagram->addTagIfAbsent<PacketProtocolTag>()->setProtocol(&Protocol::nextHopForwarding);
+
+        //Creating info for customBottom chunk
+        if (par("isSender")){ //Change customBottom if the node is a sender.
+            counter += 1;
+            const auto& emptyBottom = makeShared <customBottom>(); //Create empty bottom chunk
+            emptyBottom->setSrc(par("dataSource").stringValue());
+            emptyBottom->setDst(par("dataDestination").stringValue());
+            emptyBottom->setSeq(counter);
+            datagram->insertAtBack(emptyBottom); //Add chunk
+            EV_INFO << "Sending datagram with custom chunk-- src: " << emptyBottom->getSrc() << " dst: " << emptyBottom->getDst() << " seq: " << emptyBottom->getSeq() << "/n";
+        }
 
         // send out
         send(datagram, "queueOut");
