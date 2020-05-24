@@ -36,10 +36,6 @@ simple NextHopForwarding
         @display("i=block/routing");
         @signal[packetDropped](type=inet::Packet);
         @signal[packetSentToUpper](type=inet::Packet);
-        //customBottom parameters
-        string dataSource;
-    	string dataDestination;
-    	bool isSender = default(false);
     gates:
         input transportIn @labels(TcpHeader,UdpHeader);
         output transportOut @labels(TcpHeader,UdpHeader);

@@ -339,6 +339,16 @@ void NextHopForwarding::routePacket(Packet *datagram, const InterfaceEntry *dest
     EV_INFO << "output interface is " << destIE->getInterfaceName() << ", next-hop address: " << nextHop << "\n";
     numForwarded++;
 
+    //Creating info for customBottom chunk
+       counter += 1;
+       const auto& emptyBottom = makeShared <customBottom>(); //Create empty bottom chunk
+       emptyBottom->setSrc(header->getSourceAddress());
+       emptyBottom->setDst(destAddr);
+       emptyBottom->setSeq(counter);
+       datagram->insertAtBack(emptyBottom); //Add chunk
+       EV_INFO << "Sending datagram with custom chunk-- src: " << emptyBottom->getSrc() << " dst: " << emptyBottom->getDst() << " seq: " << emptyBottom->getSeq() << "\n";
+
+
     sendDatagramToOutput(datagram, destIE, nextHop);
 }
 
@@ -512,6 +522,7 @@ void NextHopForwarding::encapsulate(Packet *transportPacket, const InterfaceEntr
     auto l3AddressReq = transportPacket->removeTag<L3AddressReq>();
     L3Address src = l3AddressReq->getSrcAddress();
     L3Address dest = l3AddressReq->getDestAddress();
+
     delete l3AddressReq;
 
     header->setProtocol(transportPacket->getTag<PacketProtocolTag>()->getProtocol());
@@ -553,6 +564,7 @@ void NextHopForwarding::encapsulate(Packet *transportPacket, const InterfaceEntr
 
     delete transportPacket->removeControlInfo();
     header->setPayloadLengthField(transportPacket->getDataLength());
+
 
     insertNetworkProtocolHeader(transportPacket, Protocol::nextHopForwarding, header);
 }
@@ -638,17 +650,6 @@ void NextHopForwarding::sendDatagramToOutput(Packet *datagram, const InterfaceEn
         datagram->addTagIfAbsent<InterfaceReq>()->setInterfaceId(ie->getInterfaceId());
         datagram->addTagIfAbsent<DispatchProtocolInd>()->setProtocol(&Protocol::nextHopForwarding);
         datagram->addTagIfAbsent<PacketProtocolTag>()->setProtocol(&Protocol::nextHopForwarding);
-
-        //Creating info for customBottom chunk
-        if (par("isSender")){ //Change customBottom if the node is a sender.
-            counter += 1;
-            const auto& emptyBottom = makeShared <customBottom>(); //Create empty bottom chunk
-            emptyBottom->setSrc(par("dataSource").stringValue());
-            emptyBottom->setDst(par("dataDestination").stringValue());
-            emptyBottom->setSeq(counter);
-            datagram->insertAtBack(emptyBottom); //Add chunk
-            EV_INFO << "Sending datagram with custom chunk-- src: " << emptyBottom->getSrc() << " dst: " << emptyBottom->getDst() << " seq: " << emptyBottom->getSeq() << "/n";
-        }
 
         // send out
         send(datagram, "queueOut");

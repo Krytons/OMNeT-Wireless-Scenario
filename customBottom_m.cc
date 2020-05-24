@@ -269,23 +269,23 @@ void customBottom::setLengthField(B lengthField)
     this->lengthField = lengthField;
 }
 
-const char * customBottom::getSrc() const
+const L3Address& customBottom::getSrc() const
 {
-    return this->src.c_str();
+    return this->src;
 }
 
-void customBottom::setSrc(const char * src)
+void customBottom::setSrc(const L3Address& src)
 {
     handleChange();
     this->src = src;
 }
 
-const char * customBottom::getDst() const
+const L3Address& customBottom::getDst() const
 {
-    return this->dst.c_str();
+    return this->dst;
 }
 
-void customBottom::setDst(const char * dst)
+void customBottom::setDst(const L3Address& dst)
 {
     handleChange();
     this->dst = dst;
@@ -386,8 +386,8 @@ unsigned int customBottomDescriptor::getFieldTypeFlags(int field) const
     }
     static unsigned int fieldTypeFlags[] = {
         FD_ISEDITABLE,    // FIELD_lengthField
-        FD_ISEDITABLE,    // FIELD_src
-        FD_ISEDITABLE,    // FIELD_dst
+        0,    // FIELD_src
+        0,    // FIELD_dst
         FD_ISEDITABLE,    // FIELD_seq
     };
     return (field >= 0 && field < 4) ? fieldTypeFlags[field] : 0;
@@ -431,8 +431,8 @@ const char *customBottomDescriptor::getFieldTypeString(int field) const
     }
     static const char *fieldTypeStrings[] = {
         "inet::B",    // FIELD_lengthField
-        "string",    // FIELD_src
-        "string",    // FIELD_dst
+        "inet::L3Address",    // FIELD_src
+        "inet::L3Address",    // FIELD_dst
         "int",    // FIELD_seq
     };
     return (field >= 0 && field < 4) ? fieldTypeStrings[field] : nullptr;
@@ -503,8 +503,8 @@ std::string customBottomDescriptor::getFieldValueAsString(void *object, int fiel
     customBottom *pp = (customBottom *)object; (void)pp;
     switch (field) {
         case FIELD_lengthField: return unit2string(pp->getLengthField());
-        case FIELD_src: return oppstring2string(pp->getSrc());
-        case FIELD_dst: return oppstring2string(pp->getDst());
+        case FIELD_src: return pp->getSrc().str();
+        case FIELD_dst: return pp->getDst().str();
         case FIELD_seq: return long2string(pp->getSeq());
         default: return "";
     }
@@ -521,8 +521,6 @@ bool customBottomDescriptor::setFieldValueAsString(void *object, int field, int 
     customBottom *pp = (customBottom *)object; (void)pp;
     switch (field) {
         case FIELD_lengthField: pp->setLengthField(B(string2long(value))); return true;
-        case FIELD_src: pp->setSrc((value)); return true;
-        case FIELD_dst: pp->setDst((value)); return true;
         case FIELD_seq: pp->setSeq(string2long(value)); return true;
         default: return false;
     }
@@ -551,6 +549,8 @@ void *customBottomDescriptor::getFieldStructValuePointer(void *object, int field
     }
     customBottom *pp = (customBottom *)object; (void)pp;
     switch (field) {
+        case FIELD_src: return toVoidPtr(&pp->getSrc()); break;
+        case FIELD_dst: return toVoidPtr(&pp->getDst()); break;
         default: return nullptr;
     }
 }

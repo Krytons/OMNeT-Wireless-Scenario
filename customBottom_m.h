@@ -35,20 +35,22 @@ class customBottom;
 
 #include "inet/common/INETDefs_m.h" // import inet.common.INETDefs
 
+#include "inet/networklayer/common/L3Address_m.h" // import inet.networklayer.common.L3Address
+
 #include "inet/common/packet/chunk/Chunk_m.h" // import inet.common.packet.chunk.Chunk
 
 
 namespace inet {
 
 /**
- * Class generated from <tt>inet/networklayer/nexthop/customBottom.msg:6</tt> by nedtool.
+ * Class generated from <tt>inet/networklayer/nexthop/customBottom.msg:7</tt> by nedtool.
  * <pre>
  * class customBottom extends FieldsChunk
  * {
  *     chunkLength = B(6); //Lunghezza totale
  *     B lengthField = B(2); //Lunghezza campo singolo
- *     string src; //Source
- *     string dst; //Destination
+ *     L3Address src; //Source
+ *     L3Address dst; //Destination
  *     int seq = 0; //Sequence number
  * }
  * </pre>
@@ -57,8 +59,8 @@ class INET_API customBottom : public ::inet::FieldsChunk
 {
   protected:
     B lengthField = B(2);
-    omnetpp::opp_string src;
-    omnetpp::opp_string dst;
+    L3Address src;
+    L3Address dst;
     int seq = 0;
 
   private:
@@ -80,10 +82,12 @@ class INET_API customBottom : public ::inet::FieldsChunk
     // field getter/setter methods
     virtual B getLengthField() const;
     virtual void setLengthField(B lengthField);
-    virtual const char * getSrc() const;
-    virtual void setSrc(const char * src);
-    virtual const char * getDst() const;
-    virtual void setDst(const char * dst);
+    virtual const L3Address& getSrc() const;
+    virtual L3Address& getSrcForUpdate() { handleChange();return const_cast<L3Address&>(const_cast<customBottom*>(this)->getSrc());}
+    virtual void setSrc(const L3Address& src);
+    virtual const L3Address& getDst() const;
+    virtual L3Address& getDstForUpdate() { handleChange();return const_cast<L3Address&>(const_cast<customBottom*>(this)->getDst());}
+    virtual void setDst(const L3Address& dst);
     virtual int getSeq() const;
     virtual void setSeq(int seq);
 };
