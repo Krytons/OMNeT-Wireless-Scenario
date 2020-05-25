@@ -2,6 +2,14 @@
 last-configname=Static
 last-runnumber=0
 
+[Inspector-0]
+classname=omnetpp::cRectangleFigure
+fullscreen=false
+geom=@Rect(0 35 400 300)
+id=@Variant(\0\0\0\x81\xff\xff\xff\xff\xff\xff\xff\xff)
+object=NetworkModified.host[0].canvas.rootFigure.applicationLayer
+type=1
+
 [RunModeProfiles]
 fast-max-animation-speed=nan
 fast-max-playback-speed=1e+06
