@@ -211,7 +211,7 @@ Register_Class(customBottom)
 
 customBottom::customBottom() : ::inet::FieldsChunk()
 {
-    this->setChunkLength(B(6));
+    this->setChunkLength(B(8));
 
 }
 

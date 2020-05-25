@@ -188,6 +188,7 @@ void NextHopForwarding::handlePacketFromNetwork(Packet *packet)
         return;
     }
 
+
     const auto& header = packet->peekAtFront<NextHopForwardingHeader>();
     packet->addTagIfAbsent<NetworkProtocolInd>()->setProtocol(&Protocol::nextHopForwarding);
     packet->addTagIfAbsent<NetworkProtocolInd>()->setNetworkProtocolHeader(header);
@@ -340,13 +341,13 @@ void NextHopForwarding::routePacket(Packet *datagram, const InterfaceEntry *dest
     numForwarded++;
 
     //Creating info for customBottom chunk
-       counter += 1;
-       const auto& emptyBottom = makeShared <customBottom>(); //Create empty bottom chunk
-       emptyBottom->setSrc(header->getSourceAddress());
-       emptyBottom->setDst(destAddr);
-       emptyBottom->setSeq(counter);
-       datagram->insertAtBack(emptyBottom); //Add chunk
-       EV_INFO << "Sending datagram with custom chunk-- src: " << emptyBottom->getSrc() << " dst: " << emptyBottom->getDst() << " seq: " << emptyBottom->getSeq() << "\n";
+    counter += 1;
+    const auto& emptyBottom = makeShared <customBottom>(); //Create empty bottom chunk
+    emptyBottom->setSrc(header->getSourceAddress());
+    emptyBottom->setDst(destAddr);
+    emptyBottom->setSeq(counter);
+    datagram->insertAtBack(emptyBottom); //Add chunk
+    EV_INFO << "Sending datagram with custom chunk-- src: " << emptyBottom->getSrc() << " dst: " << emptyBottom->getDst() << " seq: " << emptyBottom->getSeq() <<  "\n";
 
 
     sendDatagramToOutput(datagram, destIE, nextHop);
@@ -484,6 +485,7 @@ void NextHopForwarding::routeMulticastPacket(Packet *datagram, const InterfaceEn
 //        // only copies sent, delete original datagram
 //        delete datagram;
 //    }
+    EV_WARN << "MULTICAST FORWARDING";
 }
 
 void NextHopForwarding::decapsulate(Packet *packet)
@@ -717,7 +719,7 @@ void NextHopForwarding::reinjectQueuedDatagram(const Packet *datagram)
             INetfilter::IHook::Type hookType = iter->hookType;
             switch (hookType) {
                 case INetfilter::IHook::PREROUTING:
-                    datagramPreRouting(datagram, inIE, outIE, (L3Address)par("nextHopParam"));
+                    datagramPreRouting(datagram, inIE, outIE, nextHop);
                     break;
 
                 case INetfilter::IHook::LOCALIN:
@@ -725,7 +727,7 @@ void NextHopForwarding::reinjectQueuedDatagram(const Packet *datagram)
                     break;
 
                 case INetfilter::IHook::LOCALOUT:
-                    datagramLocalOut(datagram, outIE, (L3Address)par("nextHopParam"));
+                    datagramLocalOut(datagram, outIE, nextHop);
                     break;
 
                 default:

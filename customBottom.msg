@@ -5,7 +5,7 @@ import inet.common.packet.chunk.Chunk;
 namespace inet;
 
 class customBottom extends FieldsChunk{
-    chunkLength = B(6); //Lunghezza totale
+    chunkLength = B(8); //Lunghezza totale
     B lengthField = B(2); //Lunghezza campo singolo
 	L3Address src; //Source
 	L3Address dst; //Destination
