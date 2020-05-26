@@ -84,7 +84,7 @@ class INET_API NextHopForwarding : public OperationalBase, public NetfilterBase,
 
     // config
     int defaultHopLimit;
-    L3Address nextHopParam;
+    L3Address nextHopParam; //Needed to set nextHop
 
     // working vars
     std::set<const Protocol *> upperProtocols;    // where to send packets after decapsulation

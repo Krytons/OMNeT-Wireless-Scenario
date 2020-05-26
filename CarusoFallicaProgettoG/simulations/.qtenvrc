@@ -1,6 +1,14 @@
 [General]
-last-configname=MobilitySecond
+last-configname=CloserMatrix
 last-runnumber=0
+
+[Inspector-0]
+classname=omnetpp::cOvalFigure
+fullscreen=false
+geom=@Rect(0 35 400 300)
+id=@Variant(\0\0\0\x81\xff\xff\xff\xff\xff\xff\xff\xff)
+object=NetworkModified.canvas.rootFigure.host[6].communicationRange
+type=1
 
 [RunModeProfiles]
 fast-max-animation-speed=nan

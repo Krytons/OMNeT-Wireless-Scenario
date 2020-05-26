@@ -63,7 +63,7 @@ NextHopForwarding::~NextHopForwarding()
 void NextHopForwarding::initialize(int stage)
 {
     OperationalBase::initialize(stage);
-    counter = 0;
+    counter = 0; //Counter initialization
 
     if (stage == INITSTAGE_LOCAL) {
         interfaceTable = getModuleFromPar<IInterfaceTable>(par("interfaceTableModule"), this);
@@ -218,7 +218,6 @@ void NextHopForwarding::handlePacketFromNetwork(Packet *packet)
     inIE = interfaceTable->getInterfaceById(packet->getTag<InterfaceInd>()->getInterfaceId());
     auto destIeTag = packet->findTag<InterfaceReq>();
     destIE = destIeTag ? interfaceTable->getInterfaceById(destIeTag->getInterfaceId()) : nullptr;
-    // auto nextHopTag = packet->findTag<NextHopAddressReq>();
     L3Address nextHop = (L3Address)par("nextHopParam");
     datagramPreRouting(packet, inIE, destIE, nextHop);
 }
@@ -245,7 +244,6 @@ void NextHopForwarding::handlePacketFromHL(Packet *packet)
 
     auto destIeTag = packet->findTag<InterfaceReq>();
     destIE = destIeTag ? interfaceTable->getInterfaceById(destIeTag->getInterfaceId()) : nullptr;
-    // auto nextHopTag = packet->findTag<NextHopAddressReq>();
     nextHop = (L3Address)par("nextHopParam");
 
     datagramLocalOut(packet, destIE, nextHop);
